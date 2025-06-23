@@ -5,193 +5,216 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="./css/color.css">
+    <link rel="stylesheet" href="./css/index.css">
+
     <title>Document</title>
 </head>
 
 <body>
-    <header>
-        <h1>
-            <img src="./images/logo.png" alt="logo">
-            <span>CHOcaramel</span>
-        </h1>
-        <nav>
-            <ul>
-                <li><a href="#home">HOME</a></li>
-                <li><a href="#product">PRODUCT</a></li>
-                <li><a href="#store">STORE</a></li>
-            </ul>
-            <div class="function-area">
-                <input type="text" placeholder="KEYWORD">
-                <img src="./images/search-icon.png" alt="search-icon">
-            </div>
-        </nav>
-    </header>
-    <main>
-        <div class="banner">
-            <img src="./images/banner.jpg" alt="banner">
-        </div>
-        <article class="about">
-            <h2>ABOUT</h2>
-            <p>關於</p>
-            <p>CHOcaramel 喬．焦糖—甜點裡的濃情故事</p>
-            <p>在每一塊焦糖與巧克力交織的甜點裡，都蘊藏著我們對生活的熱愛。
-                來自精選產地的高品質食材，結合匠心工藝，我們希望讓每一口都成為您生活中的小確幸。
-                從濃郁的餅乾到細膩的塔類，我們不僅製作甜點，更創造美味的記憶。
-                讓CHOcaramel，成為您日常中最奢華的一抹甜。</p>
-            <p>—濃郁細膩，為大人的味蕾獻上盛宴。</p>
-        </article>
-        <article class="main">
-            <h2>MAIN</h2>
-            <p>主打商品</p>
-            <img src="./images/main-product.jpg" alt="Main Product">
-            <p>酥脆一口，濃郁一生</p>
-            <p>焦糖餅乾</p>
-            <p>每一塊焦糖餅乾，都是一封寫給味蕾的情書。</p>
-            <p>選用法國諾曼第產區的頂級焦糖，經過細膩的慢火熬煮，讓焦糖的香甜與大地的溫暖完美結合。酥脆餅乾在入口的那一刻，釋放出溫柔的焦糖氣息，如同初戀般令人心動。
-                無論是獨享時光還是與摯友分享，這份甜蜜都將化作您記憶中最浪漫的瞬間。</p>
-            <a href="http://">了解更多</a>
-        </article>
-        <article class="other">
-            <h2>OTHER</h2>
-            <p>其他商品</p>
-            <div class="card">
-                <img src="./images/product1.jpg" alt="Product 1">
-                <h3>巧克力餅乾</h3>
-                <p>將比利時頂級巧克力融入餅乾麵團，每一口都充滿濃郁的巧克力香氣，外酥內軟，讓點心時間更加愉悅。</p>
-                <a href="http://">了解更多</a>
-            </div>
-            <div class="card">
-                <img src="./images/product2.jpg" alt="Product 2">
-                <h3>生巧克力塔</h3>
-                <p>結合濃醇生巧克力與脆口塔皮，層次豐富，細膩綿密，宛如一場巧克力的味蕾饗宴，完美詮釋濃情奢華。</p>
-                <a href="http://">了解更多</a>
-            </div>
-            <div class="card">
-                <img src="./images/product3.jpg" alt="Product 3">
-                <h3>可麗露</h3>
-                <p>外脆內彈、口感層次分明，伴隨著香草與朗姆酒的迷人氣息，是法式甜點愛好者的必選佳品，為每一口帶來法式浪漫。</p>
-                <a href="http://">了解更多</a>
-            </div>
-        </article>
-        <section class="section-pick-item">
-            <h2>PICK ITEM</h2>
-            <p>推薦商品</p>
-            <div class="card-list">
-                <article class="product-card">
-                    <!-- 商品圖片 -->
-                    <figure class="product-image">
-                        <img src="cookies.jpg" alt="焦糖酥餅(12入)">
-                    </figure>
-
-                    <!-- 商品資訊 -->
-                    <div class="product-info">
-                        <!-- 子標題 -->
-                        <p class="product-subtitle">焦糖手工小餅乾</p>
-
-                        <!-- 商品名稱 -->
-                        <h3 class="product-title">焦糖酥餅(12入)</h3>
-
-                        <!-- 價格 -->
-                        <p class="product-price">
-                            <span class="price">490</span> 元
-                        </p>
-
-                        <!-- 評價 -->
-                        <div class="product-rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="score">4.9</span>
+    <div class="wrapper">
+        <header>
+            <div class="header-logo-nav">
+                <h1>
+                    <a href="index.html">
+                        <img class="logo" src="./img/logo.png" alt="logo">
+                    </a>
+                </h1>
+                <nav>
+                    <ul>
+                        <li><a href="#home"><i class="fa-solid fa-house"></i>HOME</a></li>
+                        <li><a href="#products"><i class="fa-solid fa-palette"></i>PRODUCTS</a></li>
+                        <li><a href="#store"><i class="fa-solid fa-bag-shopping"></i>STORE</a></li>
+                    </ul>
+                    <div class="function-area">
+                        <div class="search-container">
+                            <input type="text" placeholder="KEYWORD">
+                            <button type="submit" class="search-btn">
+                                <!-- 這裡放 inline SVG icon -->
+                                <svg>
+                                    <use xlink:href="./img/svg/search_W21xH21.svg"></use>
+                                </svg>
+                            </button>
                         </div>
 
-                        <!-- 標籤 -->
-                        <div class="product-tags">
-                            <span class="tag new">新品</span>
-                            <span class="tag delivery">常溫運送</span>
-                        </div>
+                        <svg>
+                            <use xlink:href="./img/svg/shopping_cart_W40xH40.svg"></use>
+                        </svg>
+                        <svg>
+                            <use xlink:href="./img/svg/account_circle_W40xH40.svg"></use>
+                        </svg>
                     </div>
-                </article>
-                <article class="product-card">
-                    <!-- 商品圖片 -->
-                    <figure class="product-image">
-                        <img src="cookies.jpg" alt="焦糖酥餅(12入)">
-                    </figure>
-
-                    <!-- 商品資訊 -->
-                    <div class="product-info">
-                        <!-- 子標題 -->
-                        <p class="product-subtitle">焦糖手工小餅乾</p>
-
-                        <!-- 商品名稱 -->
-                        <h3 class="product-title">焦糖酥餅(12入)</h3>
-
-                        <!-- 價格 -->
-                        <p class="product-price">
-                            <span class="price">490</span> 元
-                        </p>
-
-                        <!-- 評價 -->
-                        <div class="product-rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="score">4.9</span>
-                        </div>
-
-                        <!-- 標籤 -->
-                        <div class="product-tags">
-                            <span class="tag new">新品</span>
-                            <span class="tag delivery">常溫運送</span>
-                        </div>
-                    </div>
-                </article>
-                <article class="product-card">
-                    <!-- 商品圖片 -->
-                    <figure class="product-image">
-                        <img src="cookies.jpg" alt="焦糖酥餅(12入)">
-                    </figure>
-
-                    <!-- 商品資訊 -->
-                    <div class="product-info">
-                        <!-- 子標題 -->
-                        <p class="product-subtitle">焦糖手工小餅乾</p>
-
-                        <!-- 商品名稱 -->
-                        <h3 class="product-title">焦糖酥餅(12入)</h3>
-
-                        <!-- 價格 -->
-                        <p class="product-price">
-                            <span class="price">490</span> 元
-                        </p>
-
-                        <!-- 評價 -->
-                        <div class="product-rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="score">4.9</span>
-                        </div>
-
-                        <!-- 標籤 -->
-                        <div class="product-tags">
-                            <span class="tag new">新品</span>
-                            <span class="tag delivery">常溫運送</span>
-                        </div>
-                    </div>
-                </article>
+                </nav>
             </div>
-        </section>
-    </main>
-    <footer class="site-footer">
-        <div class="footer-brand">
-            <h2>CHOcaramel 焦・焦糖</h2>
-        </div>
-        <div class="footer-info">
-            <p>
-                有任何問題，歡迎聯繫我們！
-                感謝您對 CHOcaramel 喬．焦糖的支持
-                期待為您帶來甜點的美好回憶！ </p>
-            <p>客服信箱：CHOcaramel@example.com</p>
-            <p>客服電話：02-1234-5678</p>
-        </div>
-        <div class="footer-copyright">
-            <small>©CHOcaramel 喬・焦糖 Inc.</small>
-        </div>
-    </footer>
+            <div class="banner">
+                <img src="./img/banner.png" alt="banner">
+            </div>
+        </header>
+        <main>
+            <section class="section-about">
+                <h2>ABOUT</h2>
+                <p>關於</p>
+                <p>CHOcaramel 喬．焦糖—甜點裡的濃情故事</p>
+                <p>在每一塊焦糖與巧克力交織的甜點裡，都蘊藏著我們對生活的熱愛。
+                    來自精選產地的高品質食材，結合匠心工藝，我們希望讓每一口都成為您生活中的小確幸。
+                    從濃郁的餅乾到細膩的塔類，我們不僅製作甜點，更創造美味的記憶。
+                    讓CHOcaramel，成為您日常中最奢華的一抹甜。</p>
+                <p>—濃郁細膩，為大人的味蕾獻上盛宴。</p>
+            </section>
+            <section class="section-main">
+                <h2>MAIN</h2>
+                <p>主打商品</p>
+                <img src="./images/main-product.jpg" alt="Main Product">
+                <p>酥脆一口，濃郁一生</p>
+                <p>焦糖餅乾</p>
+                <p>每一塊焦糖餅乾，都是一封寫給味蕾的情書。</p>
+                <p>選用法國諾曼第產區的頂級焦糖，經過細膩的慢火熬煮，讓焦糖的香甜與大地的溫暖完美結合。酥脆餅乾在入口的那一刻，釋放出溫柔的焦糖氣息，如同初戀般令人心動。
+                    無論是獨享時光還是與摯友分享，這份甜蜜都將化作您記憶中最浪漫的瞬間。</p>
+                <a href="http://">了解更多</a>
+            </section>
+            <section class="section-other">
+                <h2>OTHER</h2>
+                <p>其他商品</p>
+                <div class="card">
+                    <img src="./images/product1.jpg" alt="Product 1">
+                    <h3>巧克力餅乾</h3>
+                    <p>將比利時頂級巧克力融入餅乾麵團，每一口都充滿濃郁的巧克力香氣，外酥內軟，讓點心時間更加愉悅。</p>
+                    <a href="http://">了解更多</a>
+                </div>
+                <div class="card">
+                    <img src="./images/product2.jpg" alt="Product 2">
+                    <h3>生巧克力塔</h3>
+                    <p>結合濃醇生巧克力與脆口塔皮，層次豐富，細膩綿密，宛如一場巧克力的味蕾饗宴，完美詮釋濃情奢華。</p>
+                    <a href="http://">了解更多</a>
+                </div>
+                <div class="card">
+                    <img src="./images/product3.jpg" alt="Product 3">
+                    <h3>可麗露</h3>
+                    <p>外脆內彈、口感層次分明，伴隨著香草與朗姆酒的迷人氣息，是法式甜點愛好者的必選佳品，為每一口帶來法式浪漫。</p>
+                    <a href="http://">了解更多</a>
+                </div>
+            </section>
+            <section class="section-pick-item">
+                <h2>PICK ITEM</h2>
+                <p>推薦商品</p>
+                <div class="card-list">
+                    <article class="product-card">
+                        <!-- 商品圖片 -->
+                        <figure class="product-image">
+                            <img src="cookies.jpg" alt="焦糖酥餅(12入)">
+                        </figure>
+
+                        <!-- 商品資訊 -->
+                        <div class="product-info">
+                            <!-- 子標題 -->
+                            <p class="product-subtitle">焦糖手工小餅乾</p>
+
+                            <!-- 商品名稱 -->
+                            <h3 class="product-title">焦糖酥餅(12入)</h3>
+
+                            <!-- 價格 -->
+                            <p class="product-price">
+                                <span class="price">490</span> 元
+                            </p>
+
+                            <!-- 評價 -->
+                            <div class="product-rating">
+                                <span class="stars">★★★★★</span>
+                                <span class="score">4.9</span>
+                            </div>
+
+                            <!-- 標籤 -->
+                            <div class="product-tags">
+                                <span class="tag new">新品</span>
+                                <span class="tag delivery">常溫運送</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="product-card">
+                        <!-- 商品圖片 -->
+                        <figure class="product-image">
+                            <img src="cookies.jpg" alt="焦糖酥餅(12入)">
+                        </figure>
+
+                        <!-- 商品資訊 -->
+                        <div class="product-info">
+                            <!-- 子標題 -->
+                            <p class="product-subtitle">焦糖手工小餅乾</p>
+
+                            <!-- 商品名稱 -->
+                            <h3 class="product-title">焦糖酥餅(12入)</h3>
+
+                            <!-- 價格 -->
+                            <p class="product-price">
+                                <span class="price">490</span> 元
+                            </p>
+
+                            <!-- 評價 -->
+                            <div class="product-rating">
+                                <span class="stars">★★★★★</span>
+                                <span class="score">4.9</span>
+                            </div>
+
+                            <!-- 標籤 -->
+                            <div class="product-tags">
+                                <span class="tag new">新品</span>
+                                <span class="tag delivery">常溫運送</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="product-card">
+                        <!-- 商品圖片 -->
+                        <figure class="product-image">
+                            <img src="cookies.jpg" alt="焦糖酥餅(12入)">
+                        </figure>
+
+                        <!-- 商品資訊 -->
+                        <div class="product-info">
+                            <!-- 子標題 -->
+                            <p class="product-subtitle">焦糖手工小餅乾</p>
+
+                            <!-- 商品名稱 -->
+                            <h3 class="product-title">焦糖酥餅(12入)</h3>
+
+                            <!-- 價格 -->
+                            <p class="product-price">
+                                <span class="price">490</span> 元
+                            </p>
+
+                            <!-- 評價 -->
+                            <div class="product-rating">
+                                <span class="stars">★★★★★</span>
+                                <span class="score">4.9</span>
+                            </div>
+
+                            <!-- 標籤 -->
+                            <div class="product-tags">
+                                <span class="tag new">新品</span>
+                                <span class="tag delivery">常溫運送</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </main>
+        <footer class="site-footer">
+            <div class="footer-brand">
+                <h2>CHOcaramel 焦・焦糖</h2>
+            </div>
+            <div class="footer-info">
+                <p>
+                    有任何問題，歡迎聯繫我們！
+                    感謝您對 CHOcaramel 喬．焦糖的支持
+                    期待為您帶來甜點的美好回憶！ </p>
+                <p>客服信箱：CHOcaramel@example.com</p>
+                <p>客服電話：02-1234-5678</p>
+            </div>
+            <div class="footer-copyright">
+                <small>©CHOcaramel 喬・焦糖 Inc.</small>
+            </div>
+        </footer>
+    </div>
 </body>
 
 </html>
