@@ -334,7 +334,7 @@ header .header-tools .account-circle {
 
 .section-main {
     background-color: #f5f0d2;
-    /* outline: 5px solid black; */
+    outline: 5px solid black;
     width: 1920px;
     display: flex;
     justify-content: center;
