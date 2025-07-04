@@ -2668,6 +2668,27 @@ header .header-tools .account-circle {
   /* outline:10px solid black */
 }
 
+.section-pick-item::after{
+  content: "";
+  display: block;
+  /* 或 inline-block */
+  width: 100%;
+  /* 裝飾圖寬度 */
+  height: 100%;
+  /* 裝飾圖高度 */
+
+  /* outline: 1px solid blue; */
+  background-image: url(../img/screentone-bottom.webp);
+  /* 裝飾圖路徑 */
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  position: absolute;
+  /* 根據你想要的位置調整 */
+  /* 或 left / center 調整 */
+  z-index: 1;
+}
+
 .section-pick-item .text-pick-item {
   outline: 2px solid #471D00;
   margin-top: 220px;
@@ -2699,8 +2720,143 @@ header .header-tools .account-circle {
 
 .section-pick-item .card-list {
   display: flex;
+  z-index: 2;
 }
 
 .section-pick-item .product-card {
   margin-inline: 30px;
+  border-radius: 25px;
+  overflow: hidden;
+  margin-bottom: 170px;
+}
+
+.section-pick-item .product-card .product-info {
+  background-color: #ffffff;
+  padding-left: 20px;
+  padding-top: 20px;
+}
+
+.section-pick-item .product-info .product-subtitle {
+  /* 焦糖夾心餅乾 */
+  /* 細/14 */
+  font-family: 'Noto Sans TC';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  /* 無彩色/非全黑 */
+  color: #471D00;
+}
+
+.section-pick-item .product-info .product-title {
+  /* 焦糖酥語(12入) */
+  /* 中/24 */
+  font-family: 'Noto Sans TC';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+  /* 無彩色/非全黑 */
+  color: #471D00;
+}
+
+.section-pick-item .product-price {
+  /* 元 */
+  /* 中/24 */
+  font-family: 'Noto Sans TC';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+  /* 無彩色/非全黑 */
+  color: #471D00;
+}
+
+.section-pick-item .product-price .price {
+  /* 490 */
+  /* 粗/48 */
+  font-family: 'Noto Sans TC';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 78px;
+
+  /* 無彩色/非全黑 */
+  color: #471D00;
+}
+
+.section-pick-item .product-rating .stars {
+  color: #F69100;
+  font-size: 36px;
+}
+
+.section-pick-item .product-rating .score {
+  /* 4.9 */
+  width: 35px;
+  height: 32px;
+  /* 中/24 */
+  font-family: 'Noto Sans TC';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+  text-align: right;
+  /* 無彩色/非全黑 */
+  color: #471D00;
+}
+
+.section-pick-item .product-tags{
+  padding-bottom: 28px;
+}
+
+.section-pick-item .product-tags .new{
+/* 商品標籤 */
+padding: 2px 8px 4px;
+gap: 10px;
+
+width: 52px;
+height: 32px;
+
+/* 標籤色/紅 */
+background: #F75633;
+border-radius: 6px;
+
+/* 常溫運送 */
+width: 36px;
+height: 26px;
+
+/* 中/18 */
+font-family: 'Noto Sans TC';
+font-style: normal;
+font-weight: 500;
+font-size: 18px;
+line-height: 26px;
+/* 無彩色/白 */
+color: #FFFFFF;
+}
+
+.section-pick-item .product-tags .delivery{
+  /* 商品標籤 */
+padding: 2px 8px 4px;
+gap: 10px;
+
+width: 52px;
+height: 32px;
+
+/* 標籤色/紅 */
+background: #006fcf;
+border-radius: 6px;
+
+/* 常溫運送 */
+width: 36px;
+height: 26px;
+
+/* 中/18 */
+font-family: 'Noto Sans TC';
+font-style: normal;
+font-weight: 500;
+font-size: 18px;
+line-height: 26px;
+/* 無彩色/白 */
+color: #ffffff;
 }
