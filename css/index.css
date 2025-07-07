@@ -2668,7 +2668,7 @@ header .header-tools .account-circle {
   /* outline:10px solid black */
 }
 
-.section-pick-item::after{
+.section-pick-item::after {
   content: "";
   display: block;
   /* 或 inline-block */
@@ -2741,7 +2741,7 @@ header .header-tools .account-circle {
   /* 細/14 */
   font-family: 'Noto Sans TC';
   font-style: normal;
-  font-weight: 400;
+  font-weight: 600;
   font-size: 14px;
   line-height: 17px;
   /* 無彩色/非全黑 */
@@ -2753,7 +2753,7 @@ header .header-tools .account-circle {
   /* 中/24 */
   font-family: 'Noto Sans TC';
   font-style: normal;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 24px;
   line-height: 32px;
   /* 無彩色/非全黑 */
@@ -2797,7 +2797,7 @@ header .header-tools .account-circle {
   /* 中/24 */
   font-family: 'Noto Sans TC';
   font-style: normal;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 24px;
   line-height: 32px;
   text-align: right;
@@ -2805,58 +2805,109 @@ header .header-tools .account-circle {
   color: #471D00;
 }
 
-.section-pick-item .product-tags{
+.section-pick-item .product-tags {
   padding-bottom: 28px;
 }
 
-.section-pick-item .product-tags .new{
-/* 商品標籤 */
-padding: 2px 8px 4px;
-gap: 10px;
+.section-pick-item .product-tags .new {
+  /* 商品標籤 */
+  padding: 2px 8px 4px;
+  gap: 10px;
 
-width: 52px;
-height: 32px;
+  width: 52px;
+  height: 32px;
 
-/* 標籤色/紅 */
-background: #F75633;
-border-radius: 6px;
+  /* 標籤色/紅 */
+  background: #F75633;
+  border-radius: 6px;
 
-/* 常溫運送 */
-width: 36px;
-height: 26px;
+  /* 常溫運送 */
+  width: 36px;
+  height: 26px;
 
-/* 中/18 */
-font-family: 'Noto Sans TC';
-font-style: normal;
-font-weight: 500;
-font-size: 18px;
-line-height: 26px;
-/* 無彩色/白 */
-color: #FFFFFF;
+  /* 中/18 */
+  font-family: 'Noto Sans TC';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 26px;
+  /* 無彩色/白 */
+  color: #FFFFFF;
 }
 
-.section-pick-item .product-tags .delivery{
+.section-pick-item .product-tags .delivery {
   /* 商品標籤 */
-padding: 2px 8px 4px;
-gap: 10px;
+  padding: 2px 8px 4px;
+  gap: 10px;
 
-width: 52px;
-height: 32px;
+  width: 52px;
+  height: 32px;
 
-/* 標籤色/紅 */
-background: #006fcf;
-border-radius: 6px;
+  /* 標籤色/紅 */
+  background: #006fcf;
+  border-radius: 6px;
 
-/* 常溫運送 */
-width: 36px;
-height: 26px;
+  /* 常溫運送 */
+  width: 36px;
+  height: 26px;
 
+  /* 中/18 */
+  font-family: 'Noto Sans TC';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 26px;
+  /* 無彩色/白 */
+  color: #ffffff;
+}
+
+.site-footer {
+  padding-block:7.8%;
+  width: 1920px;
+  /* 主色調/橘 */
+  background: #F69100;
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+}
+
+.site-footer .footer-info p:nth-child(1) {
+  /* 有任何問題，歡迎聯繫我們！ 感謝您對 CHOcaramel 喬．焦糖的支持 期待為您帶來甜點的美好回憶！ */
+  /* 中/24 */
+  font-family: 'Noto Sans TC';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 32px;
+  /* 無彩色/非全黑 */
+  color: #471D00;
+}
+
+.site-footer .footer-info p:nth-child(2),.site-footer .footer-info p:nth-child(3) {
+  /* 客服信箱：CHOcara@example.com 客服電話：(02)1234-5678 */
+  /* 中/18 */
+  font-family: 'Noto Sans TC';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 26px;
+
+  /* 無彩色/非全黑 */
+  color: #471D00;
+}
+
+.site-footer .footer-copyright{
+/* ©CHOcaramel 喬．焦糖 Inc. */
 /* 中/18 */
 font-family: 'Noto Sans TC';
 font-style: normal;
-font-weight: 500;
+font-weight: 600;
 font-size: 18px;
 line-height: 26px;
+
 /* 無彩色/白 */
-color: #ffffff;
+color: #FFFFFF;
+position: absolute;
+right: 3%;
+bottom:35%;
 }
