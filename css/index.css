@@ -2730,6 +2730,15 @@ header .header-tools .account-circle {
   margin-bottom: 170px;
 }
 
+.section-pick-item .product-card .product-image{
+    opacity: 1;
+    transition: all 0.3s;
+}
+
+.section-pick-item .product-card .product-image:hover{
+  opacity: 0.5;
+}
+
 .section-pick-item .product-card .product-info {
   background-color: #ffffff;
   padding-left: 20px;
