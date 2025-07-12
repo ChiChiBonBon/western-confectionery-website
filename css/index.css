@@ -1,6 +1,6 @@
-* {
+/* * {
   outline: 1px solid blue;
-}
+} */
 
 body {
   width: 1920px;
@@ -943,7 +943,6 @@ header .header-tools .account-circle {
 .section-about::after {
   content: "";
   display: block;
-  border: 1px solid blue;
   position: absolute;
   height: 261px;
   width: 100%;
@@ -954,7 +953,6 @@ header .header-tools .account-circle {
 
 .section-main {
   background-color: #f5f0d2;
-  outline: 5px solid red;
   width: 1920px;
   display: flex;
   justify-content: center;
@@ -1724,6 +1722,7 @@ header .header-tools .account-circle {
   line-height: 42px;
   text-align: center;
   letter-spacing: 0.02em;
+  color: #471D00;
 }
 
 .section-main .article-main .p-main-title {
@@ -1738,6 +1737,7 @@ header .header-tools .account-circle {
   text-align: center;
   letter-spacing: 0.01em;
   margin-bottom: 30px;
+  color: #471D00;
 }
 
 .section-main .article-main .p-main-content {
@@ -2631,7 +2631,6 @@ header .header-tools .account-circle {
 
 .section-pick-item {
   width: 1920px;
-  ;
   background-color: #f5f0d2;
   position: relative;
 
@@ -2690,7 +2689,6 @@ header .header-tools .account-circle {
 }
 
 .section-pick-item .text-pick-item {
-  outline: 2px solid #471D00;
   margin-top: 220px;
   margin-bottom: 85px;
   color: #471D00;
@@ -2919,4 +2917,36 @@ color: #FFFFFF;
 position: absolute;
 right: 3%;
 bottom:35%;
+}
+
+.chat-robot{
+  position: fixed;
+  right:-10%;
+  bottom: 20%;
+  z-index: 9;
+
+  opacity: 0.5;
+  transition: all 0.3s;
+}
+
+.chat-robot:hover{
+  opacity: 1;
+}
+
+.chat-robot::before{
+  outline: 5px dashed #471D00;
+  content: '我是兔兔紳士，需要幫忙嘛?';
+  display: block;
+  padding: 2%;
+  font-family: 'Noto Sans TC';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 26px;
+  position: absolute;
+  left: -50%;
+}
+
+.chat-robot img{
+  width: 50%;
 }
