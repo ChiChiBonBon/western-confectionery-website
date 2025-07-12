@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./css/reset.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+  <link rel="stylesheet" href="./css/color.css" />
+  <link rel="stylesheet" href="./css/products.css" />
+
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="wrapper">
+    <header>
+      <div class="header-logo-nav">
+        <h1>
+          <a href="index.html">
+            <img class="logo" src="./img/logo-removebg-preview.png" alt="logo" />
+          </a>
+        </h1>
+        <nav class="nav-main">
+          <ul>
+            <li>
+              <a href="index.html"><i class="fa-solid fa-house"></i>HOME</a>
+            </li>
+            <li>
+              <a href="products.html"><i class="fa-solid fa-palette"></i>PRODUCTS</a>
+            </li>
+            <li>
+              <a href="#store"><i class="fa-solid fa-bag-shopping"></i>STORE</a>
+            </li>
+          </ul>
+          <div class="header-tools">
+            <div class="search-container">
+              <input type="text" placeholder="KEYWORD" />
+              <button type="submit" class="search-btn">
+                <!-- 這裡放 inline SVG icon -->
+                <svg class="search-icon">
+                  <use xlink:href="./img/svg/search_W21xH21.svg"></use>
+                </svg>
+              </button>
+            </div>
+            <a href="" class="icon-link">
+              <svg class="shopping-cart">
+                <use xlink:href="./img/svg/shopping_cart_W40xH40.svg"></use>
+              </svg>
+            </a>
+            <a href="" class="icon-link">
+              <svg class="account-circle">
+                <use xlink:href="./img/svg/account_circle_W40xH40.svg"></use>
+              </svg>
+            </a>
+          </div>
+        </nav>
+      </div>
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <ol>
+          <li><a href="/"><i class="fa-solid fa-house"></i>Home</a></li>
+          <li><a href="/products"><i class="fa-solid fa-palette"></i>Products</a></li>
+        </ol>
+      </nav>
+    </header>
+    <section class="section-products">
+      <div class="shape-cookie"></div>
+      <article class="article-products">
+        <h2 class="products-title">PRODUCTS</h2>
+        <p class="products-subtitle">商品</p>
+      </article>
+      <div class="card-list">
+        <!--預計塞資料的地方-->
+        <article class="product-card" itemscope itemtype="https://schema.org/Product">
+          <!-- 商品圖片 -->
+          <figure class="product-image">
+            <img src="./img/product-recommanted-card (1).webp" alt="焦糖酥餅(12入)" itemprop="image" />
+          </figure>
+
+          <!-- 商品資訊 -->
+          <div class="product-info">
+            <!-- 商品名稱 -->
+            <h3 class="product-title" itemprop="name">定番送禮首選</h3>
+
+            <!-- 商品說明 -->
+            <p class="product-subtitle" itemprop="description">招牌迷你可麗露多種口味</p>
+            <p class="product-subtitle" itemprop="description">小巧精緻、精美包裝</p>
+
+            <!-- 行動按鈕（可選） -->
+            <a href="#" class="product-link" itemprop="url" aria-label="查看更多定番送禮首選商品介紹">➜</a>
+          </div>
+        </article>
+        <article class="product-card" itemscope itemtype="https://schema.org/Product">
+          <!-- 商品圖片 -->
+          <figure class="product-image">
+            <img src="./img/product-recommanted-card (1).webp" alt="焦糖酥餅(12入)" itemprop="image" />
+          </figure>
+
+          <!-- 商品資訊 -->
+          <div class="product-info">
+            <!-- 商品名稱 -->
+            <h3 class="product-title" itemprop="name">打造專屬儀式感</h3>
+
+            <!-- 商品說明 -->
+            <p class="product-subtitle" itemprop="description">迷你小點系列任選12入</p>
+            <p class="product-subtitle" itemprop="description">打造個人專屬甜點儀式!</p>
+
+            <!-- 行動按鈕（可選） -->
+            <a href="#" class="product-link" itemprop="url" aria-label="查看更多打造專屬儀式感商品介紹">➜</a>
+          </div>
+        </article>
+                <article class="product-card" itemscope itemtype="https://schema.org/Product">
+          <!-- 商品圖片 -->
+          <figure class="product-image">
+            <img src="./img/product-recommanted-card (1).webp" alt="焦糖酥餅(12入)" itemprop="image" />
+          </figure>
+
+          <!-- 商品資訊 -->
+          <div class="product-info">
+            <!-- 商品名稱 -->
+            <h3 class="product-title" itemprop="name">下午茶療癒推薦</h3>
+
+            <!-- 商品說明 -->
+            <p class="product-subtitle" itemprop="description">巧克力塔與焦糖餅的多重組合</p>
+            <p class="product-subtitle" itemprop="description">濃郁口味一次滿足</p>
+
+            <!-- 行動按鈕（可選） -->
+            <a href="#" class="product-link" itemprop="url" aria-label="查看更多下午茶療癒推薦商品介紹">➜</a>
+          </div>
+        </article>
+      </div>
+    </section>
+    <footer class="site-footer">
+      <div class="footer-brand">
+        <h2>
+          <a href="index.html">
+            <img class="logo" src="./img/CHOcaramel 喬・焦糖.svg" alt="logo" />
+          </a>
+        </h2>
+      </div>
+      <div class="footer-info">
+        <p>
+          有任何問題，歡迎聯繫我們！ 感謝您對 CHOcaramel 喬．焦糖的支持
+          期待為您帶來甜點的美好回憶！
+        </p>
+        <p>客服信箱：CHOcaramel@example.com</p>
+        <p>客服電話：02-1234-5678</p>
+      </div>
+      <div class="footer-copyright">
+        <small>©CHOcaramel 喬・焦糖 Inc.</small>
+      </div>
+    </footer>
+  </div>
+</body>
+
+</html>
