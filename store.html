@@ -1,504 +1,80 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CHOcaramel</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.global.min.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    />
-    <link rel="stylesheet" href="/css/store.css" />
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
 
-      body {
-        font-family: "Microsoft JhengHei", Arial, sans-serif;
-        background-color: #f5f5f5;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CHOcaramel</title>
+  <link rel="stylesheet" href="./css/reset.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+  <link rel="stylesheet" href="/css/store.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.global.min.js"></script>
+</head>
 
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 20px;
-      }
-
-      /* 熱門商品區 */
-      .hot-section {
-        background: linear-gradient(135deg, #ff8c00, #ffa500);
-        padding: 30px 20px;
-        border-radius: 15px;
-        margin-bottom: 30px;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .hot-section::before {
-        content: "";
-        position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background: repeating-linear-gradient(
-          45deg,
-          rgba(255, 255, 255, 0.1) 0px,
-          rgba(255, 255, 255, 0.1) 10px,
-          transparent 10px,
-          transparent 20px
-        );
-        animation: wave 10s linear infinite;
-      }
-
-      @keyframes wave {
-        0% {
-          transform: translateX(-50%) translateY(-50%) rotate(0deg);
-        }
-        100% {
-          transform: translateX(-50%) translateY(-50%) rotate(360deg);
-        }
-      }
-
-      .hot-badge {
-        background: white;
-        color: #ff8c00;
-        padding: 15px 25px;
-        border-radius: 50px;
-        font-size: 18px;
-        font-weight: bold;
-        display: inline-block;
-        margin-bottom: 20px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        position: relative;
-        z-index: 1;
-      }
-
-      .hot-products {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 20px;
-        position: relative;
-        z-index: 1;
-      }
-
-      .product-card {
-        background: white;
-        border-radius: 15px;
-        overflow: hidden;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        cursor: pointer;
-      }
-
-      .product-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-      }
-
-      .product-image {
-        width: 100%;
-        height: 150px;
-        object-fit: cover;
-        transition: transform 0.3s ease;
-      }
-
-      .product-card:hover .product-image {
-        transform: scale(1.1);
-      }
-
-      .product-info {
-        padding: 15px;
-        text-align: center;
-      }
-
-      .product-name {
-        font-size: 14px;
-        color: #333;
-        margin-bottom: 10px;
-        font-weight: 500;
-      }
-
-      .product-price {
-        font-size: 18px;
-        font-weight: bold;
-        color: #ff8c00;
-        margin-bottom: 10px;
-      }
-
-      .product-rating {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 5px;
-        margin-bottom: 10px;
-      }
-
-      .stars {
-        color: #ffd700;
-      }
-
-      .rating-text {
-        font-size: 12px;
-        color: #666;
-      }
-
-      .add-to-cart {
-        background: #ff8c00;
-        color: white;
-        border: none;
-        padding: 8px 15px;
-        border-radius: 20px;
-        cursor: pointer;
-        font-size: 12px;
-        transition: all 0.3s ease;
-      }
-
-      .add-to-cart:hover {
-        background: #e67e00;
-      }
-
-      /* 優惠活動區 */
-      .promotion-section {
-        background: linear-gradient(135deg, #fff8e1, #ffecb3);
-        padding: 30px;
-        border-radius: 15px;
-        margin-bottom: 30px;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .promotion-content {
-        display: flex;
-        align-items: center;
-        gap: 30px;
-      }
-
-      .promotion-image {
-        flex: 1;
-        max-width: 300px;
-      }
-
-      .promotion-image img {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-        border-radius: 10px;
-      }
-
-      .promotion-text {
-        flex: 1;
-      }
-
-      .promotion-title {
-        font-size: 28px;
-        font-weight: bold;
-        color: #ff8c00;
-        margin-bottom: 10px;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-      }
-
-      .promotion-subtitle {
-        font-size: 20px;
-        color: #333;
-        margin-bottom: 20px;
-      }
-
-      .promotion-decoration {
-        position: absolute;
-        right: 20px;
-        top: 20px;
-        width: 100px;
-        height: 100px;
-        background: radial-gradient(circle, #ff8c00, #ffa500);
-        border-radius: 50%;
-        opacity: 0.3;
-        animation: pulse 2s infinite;
-      }
-
-      @keyframes pulse {
-        0% {
-          transform: scale(1);
-          opacity: 0.3;
-        }
-        50% {
-          transform: scale(1.1);
-          opacity: 0.2;
-        }
-        100% {
-          transform: scale(1);
-          opacity: 0.3;
-        }
-      }
-
-      /* 商品網格區 */
-      .products-section {
-        background: white;
-        padding: 30px;
-        border-radius: 15px;
-        margin-bottom: 30px;
-      }
-
-      .filter-controls {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 30px;
-        flex-wrap: wrap;
-        gap: 15px;
-      }
-
-      .filter-select {
-        padding: 8px 15px;
-        border: 1px solid #ddd;
-        border-radius: 25px;
-        font-size: 14px;
-        background: white;
-        cursor: pointer;
-        transition: border-color 0.3s ease;
-      }
-
-      .filter-select:hover {
-        border-color: #ff8c00;
-      }
-
-      .products-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-        gap: 25px;
-      }
-
-      .product-tag {
-        position: absolute;
-        top: 10px;
-        left: 10px;
-        background: #ff8c00;
-        color: white;
-        padding: 4px 8px;
-        border-radius: 12px;
-        font-size: 10px;
-        font-weight: bold;
-        z-index: 2;
-      }
-
-      .product-card {
-        position: relative;
-      }
-
-      /* 分頁 */
-      .pagination {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        margin: 30px 0;
-      }
-
-      .page-btn {
-        width: 35px;
-        height: 35px;
-        border: none;
-        border-radius: 50%;
-        background: #f0f0f0;
-        color: #666;
-        cursor: pointer;
-        font-weight: bold;
-        transition: all 0.3s ease;
-      }
-
-      .page-btn:hover,
-      .page-btn.active {
-        background: #ff8c00;
-        color: white;
-      }
-
-      /* 底部信息 */
-      .footer {
-        background: #ff8c00;
-        color: white;
-        padding: 30px;
-        border-radius: 15px;
-        text-align: center;
-      }
-
-      .footer-content {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 20px;
-      }
-
-      .brand-logo {
-        font-size: 24px;
-        font-weight: bold;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-      }
-
-      .footer-text {
-        font-size: 14px;
-        line-height: 1.6;
-      }
-
-      .contact-info {
-        display: flex;
-        gap: 15px;
-        align-items: center;
-      }
-
-      .contact-item {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-      }
-
-      /* 響應式設計 */
-      @media (max-width: 768px) {
-        .hot-products {
-          grid-template-columns: repeat(2, 1fr);
-        }
-
-        .promotion-content {
-          flex-direction: column;
-          text-align: center;
-        }
-
-        .promotion-title {
-          font-size: 24px;
-        }
-
-        .products-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-
-        .footer-content {
-          flex-direction: column;
-          text-align: center;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .hot-products {
-          grid-template-columns: 1fr;
-        }
-
-        .products-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .container {
-          padding: 10px;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <div id="app">
-      <div class="container">
-        <header>
-          <div class="header-logo-nav">
-            <h1>
-              <a href="index.html">
-                <img
-                  class="logo"
-                  src="./img/logo-removebg-preview.png"
-                  alt="logo"
-                />
-              </a>
-            </h1>
-            <nav>
-              <ul>
-                <li>
-                  <a href="index.html"><i class="fa-solid fa-house"></i>HOME</a>
-                </li>
-                <li>
-                  <a href="products.html"
-                    ><i class="fa-solid fa-palette"></i>PRODUCTS</a
-                  >
-                </li>
-                <li>
-                  <a href="store.html"
-                    ><i class="fa-solid fa-bag-shopping"></i>STORE</a
-                  >
-                </li>
-              </ul>
-              <div class="header-tools">
-                <div class="search-container">
-                  <input type="text" placeholder="KEYWORD" />
-                  <button type="submit" class="search-btn">
-                    <!-- 這裡放 inline SVG icon -->
-                    <svg class="search-icon">
-                      <use xlink:href="./img/svg/search_W21xH21.svg"></use>
-                    </svg>
-                  </button>
-                </div>
-                <a href="" class="icon-link">
-                  <svg class="shopping-cart">
-                    <use xlink:href="./img/svg/shopping_cart_W40xH40.svg"></use>
+<body>
+  <div id="app">
+    <div class="wrapper">
+      <header>
+        <div class="header-logo-nav">
+          <h1>
+            <a href="index.html">
+              <img class="logo" src="./img/logo-removebg-preview.png" alt="logo" />
+            </a>
+          </h1>
+          <nav class="nav-main">
+            <ul>
+              <li>
+                <a href="index.html"><i class="fa-solid fa-house"></i>HOME</a>
+              </li>
+              <li>
+                <a href="products.html"><i class="fa-solid fa-palette"></i>PRODUCTS</a>
+              </li>
+              <li>
+                <a href="store.html"><i class="fa-solid fa-bag-shopping"></i>STORE</a>
+              </li>
+            </ul>
+            <div class="header-tools">
+              <div class="search-container">
+                <input type="text" placeholder="KEYWORD" />
+                <button type="submit" class="search-btn">
+                  <!-- 這裡放 inline SVG icon -->
+                  <svg class="search-icon">
+                    <use xlink:href="./img/svg/search_W21xH21.svg"></use>
                   </svg>
-                </a>
-                <a href="" class="icon-link">
-                  <svg class="account-circle">
-                    <use
-                      xlink:href="./img/svg/account_circle_W40xH40.svg"
-                    ></use>
-                  </svg>
-                </a>
-              </div>
-            </nav>
-          </div>
-        </header>
-        <!-- 熱門商品區 -->
-        <div class="hot-section">
-          <div class="hot-badge"><i class="fas fa-fire"></i> HOT 熱賣商品</div>
-          <div class="hot-products">
-            <div
-              class="product-card"
-              v-for="product in hotProducts"
-              :key="product.id"
-            >
-              <img
-                :src="product.image"
-                :alt="product.name"
-                class="product-image"
-              />
-              <div class="product-info">
-                <div class="product-name">{{ product.name }}</div>
-                <div class="product-price">{{ product.price }} 元</div>
-                <div class="product-rating">
-                  <div class="stars">
-                    <i class="fas fa-star" v-for="i in 5" :key="i"></i>
-                  </div>
-                  <span class="rating-text">{{ product.rating }}</span>
-                </div>
-                <button class="add-to-cart">
-                  <i class="fas fa-shopping-cart"></i>
                 </button>
               </div>
+              <a href="" class="icon-link">
+                <svg class="shopping-cart">
+                  <use xlink:href="./img/svg/shopping_cart_W40xH40.svg"></use>
+                </svg>
+              </a>
+              <a href="" class="icon-link">
+                <svg class="account-circle">
+                  <use xlink:href="./img/svg/account_circle_W40xH40.svg"></use>
+                </svg>
+              </a>
             </div>
-          </div>
+          </nav>
         </div>
-
+        <nav aria-label="Breadcrumb" class="breadcrumb">
+          <ol>
+            <li>
+              <a href="index.html"><i class="fa-solid fa-house"></i>Home</a>
+            </li>
+            <li>
+              <a href="store.html"><i class="fa-solid fa-bag-shopping"></i>Store</a>
+            </li>
+          </ol>
+        </nav>
+      </header>
+      <section class="section-store">
         <!-- 優惠活動區 -->
-        <div class="promotion-section">
-          <div class="promotion-decoration"></div>
-          <div class="promotion-content">
-            <div class="promotion-image">
-              <img
-                src="https://images.unsplash.com/photo-1549007994-cb92caebd54b?w=300&h=200&fit=crop"
-                alt="優惠商品"
-              />
-            </div>
-            <div class="promotion-text">
-              <div class="promotion-title">多選優惠！購買3項商品</div>
-              <div class="promotion-subtitle">即打8折！</div>
-            </div>
+        <div class="section-promotion">
+          <div class="promotion-image">
+            <img src="./img/store-banner.png" alt="優惠商品" />
+            <!-- <img src="https://images.unsplash.com/photo-1549007994-cb92caebd54b?w=300&h=200&fit=crop" alt="優惠商品" /> -->
           </div>
         </div>
-
         <!-- 商品網格區 -->
         <div class="products-section">
           <div class="filter-controls">
@@ -519,33 +95,16 @@
               </select>
             </div>
           </div>
-
           <div class="products-grid">
-            <div
-              class="product-card"
-              v-for="product in filteredProducts"
-              :key="product.id"
-            >
+            <div class="product-card" v-for="product in filteredProducts" :key="product.id">
               <div class="product-tag" v-if="product.isHot">熱賣</div>
-              <div
-                class="product-tag"
-                v-else-if="product.isNew"
-                style="background: #28a745"
-              >
+              <div class="product-tag" v-else-if="product.isNew" style="background: #28a745">
                 新品
               </div>
-              <div
-                class="product-tag"
-                v-else-if="product.isDiscounted"
-                style="background: #dc3545"
-              >
+              <div class="product-tag" v-else-if="product.isDiscounted" style="background: #dc3545">
                 特價
               </div>
-              <img
-                :src="product.image"
-                :alt="product.name"
-                class="product-image"
-              />
+              <img :src="product.image" :alt="product.name" class="product-image" />
               <div class="product-info">
                 <div class="product-name">{{ product.name }}</div>
                 <div class="product-price">{{ product.price }} 元</div>
@@ -561,190 +120,189 @@
               </div>
             </div>
           </div>
-
           <!-- 分頁 -->
           <div class="pagination">
             <button class="page-btn active">1</button>
             <button class="page-btn">2</button>
           </div>
         </div>
-
-        <!-- 底部信息 -->
-        <div class="footer">
-          <div class="footer-content">
-            <div class="brand-logo">CHOcaramel 喬・焦糖</div>
-            <div class="footer-text">
-              我們專業於製作高品質的巧克力和焦糖產品，堅持使用天然原料，為您帶來最純正的美味體驗。<br />
-              每一款產品都經過精心調配，讓您品嚐到最完美的甜蜜滋味。
-            </div>
-            <div class="contact-info">
-              <div class="contact-item">
-                <i class="fas fa-envelope"></i>
-                <span>info@chocaramel.com</span>
-              </div>
-              <div class="contact-item">
-                <i class="fas fa-phone"></i>
-                <span>0800-123-456</span>
-              </div>
-            </div>
-          </div>
+      </section>
+      <footer class="site-footer">
+        <div class="footer-brand">
+          <h2>
+            <a href="index.html">
+              <img class="logo" src="./img/CHOcaramel 喬・焦糖.svg" alt="logo" />
+            </a>
+          </h2>
         </div>
-      </div>
+        <div class="footer-info">
+          <p>
+            有任何問題，歡迎聯繫我們！ 感謝您對 CHOcaramel 喬．焦糖的支持
+            期待為您帶來甜點的美好回憶！
+          </p>
+          <p>客服信箱：CHOcaramel@example.com</p>
+          <p>客服電話：02-1234-5678</p>
+        </div>
+        <div class="footer-copyright">
+          <small>©CHOcaramel 喬・焦糖 Inc.</small>
+        </div>
+      </footer>
     </div>
+  </div>
+  <script>
+    const { createApp } = Vue;
 
-    <script>
-      const { createApp } = Vue;
+    createApp({
+      data() {
+        return {
+          selectedCategory: "",
+          sortBy: "default",
+          hotProducts: [
+            {
+              id: 1,
+              name: "香草牛奶布丁（1入）",
+              price: 490,
+              rating: 4.8,
+              image:
+                "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=200&h=150&fit=crop",
+            },
+            {
+              id: 2,
+              name: "巧克力布丁（1入）",
+              price: 380,
+              rating: 4.9,
+              image:
+                "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=200&h=150&fit=crop",
+            },
+            {
+              id: 3,
+              name: "焦糖布丁（1入）",
+              price: 580,
+              rating: 4.7,
+              image:
+                "https://images.unsplash.com/photo-1587314168485-3236d6710814?w=200&h=150&fit=crop",
+            },
+            {
+              id: 4,
+              name: "巧克力蛋糕（1入）",
+              price: 260,
+              rating: 4.6,
+              image:
+                "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=200&h=150&fit=crop",
+            },
+          ],
+          products: [
+            {
+              id: 5,
+              name: "香草牛奶布丁（1入）",
+              price: 490,
+              rating: 4.8,
+              category: "mixed",
+              image:
+                "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=200&h=150&fit=crop",
+              isHot: true,
+            },
+            {
+              id: 6,
+              name: "巧克力布丁（1入）",
+              price: 260,
+              rating: 4.9,
+              category: "chocolate",
+              image:
+                "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=200&h=150&fit=crop",
+              isHot: true,
+            },
+            {
+              id: 7,
+              name: "焦糖布丁（1入）",
+              price: 200,
+              rating: 4.7,
+              category: "caramel",
+              image:
+                "https://images.unsplash.com/photo-1587314168485-3236d6710814?w=200&h=150&fit=crop",
+              isNew: true,
+            },
+            {
+              id: 8,
+              name: "巧克力蛋糕（1入）",
+              price: 380,
+              rating: 4.6,
+              category: "chocolate",
+              image:
+                "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=200&h=150&fit=crop",
+              isHot: true,
+            },
+            {
+              id: 9,
+              name: "巧克力蛋糕（1入）",
+              price: 150,
+              rating: 4.5,
+              category: "chocolate",
+              image:
+                "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=200&h=150&fit=crop",
+              isDiscounted: true,
+            },
+            {
+              id: 10,
+              name: "焦糖布丁（1入）",
+              price: 580,
+              rating: 4.8,
+              category: "caramel",
+              image:
+                "https://images.unsplash.com/photo-1587314168485-3236d6710814?w=200&h=150&fit=crop",
+              isHot: true,
+            },
+            {
+              id: 11,
+              name: "巧克力蛋糕（1入）",
+              price: 490,
+              rating: 4.7,
+              category: "chocolate",
+              image:
+                "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=200&h=150&fit=crop",
+              isNew: true,
+            },
+            {
+              id: 12,
+              name: "巧克力蛋糕（1入）",
+              price: 260,
+              rating: 4.6,
+              category: "chocolate",
+              image:
+                "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=200&h=150&fit=crop",
+              isDiscounted: true,
+            },
+          ],
+        };
+      },
+      computed: {
+        filteredProducts() {
+          let filtered = this.products;
 
-      createApp({
-        data() {
-          return {
-            selectedCategory: "",
-            sortBy: "default",
-            hotProducts: [
-              {
-                id: 1,
-                name: "香草牛奶布丁（1入）",
-                price: 490,
-                rating: 4.8,
-                image:
-                  "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=200&h=150&fit=crop",
-              },
-              {
-                id: 2,
-                name: "巧克力布丁（1入）",
-                price: 380,
-                rating: 4.9,
-                image:
-                  "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=200&h=150&fit=crop",
-              },
-              {
-                id: 3,
-                name: "焦糖布丁（1入）",
-                price: 580,
-                rating: 4.7,
-                image:
-                  "https://images.unsplash.com/photo-1587314168485-3236d6710814?w=200&h=150&fit=crop",
-              },
-              {
-                id: 4,
-                name: "巧克力蛋糕（1入）",
-                price: 260,
-                rating: 4.6,
-                image:
-                  "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=200&h=150&fit=crop",
-              },
-            ],
-            products: [
-              {
-                id: 5,
-                name: "香草牛奶布丁（1入）",
-                price: 490,
-                rating: 4.8,
-                category: "mixed",
-                image:
-                  "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=200&h=150&fit=crop",
-                isHot: true,
-              },
-              {
-                id: 6,
-                name: "巧克力布丁（1入）",
-                price: 260,
-                rating: 4.9,
-                category: "chocolate",
-                image:
-                  "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=200&h=150&fit=crop",
-                isHot: true,
-              },
-              {
-                id: 7,
-                name: "焦糖布丁（1入）",
-                price: 200,
-                rating: 4.7,
-                category: "caramel",
-                image:
-                  "https://images.unsplash.com/photo-1587314168485-3236d6710814?w=200&h=150&fit=crop",
-                isNew: true,
-              },
-              {
-                id: 8,
-                name: "巧克力蛋糕（1入）",
-                price: 380,
-                rating: 4.6,
-                category: "chocolate",
-                image:
-                  "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=200&h=150&fit=crop",
-                isHot: true,
-              },
-              {
-                id: 9,
-                name: "巧克力蛋糕（1入）",
-                price: 150,
-                rating: 4.5,
-                category: "chocolate",
-                image:
-                  "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=200&h=150&fit=crop",
-                isDiscounted: true,
-              },
-              {
-                id: 10,
-                name: "焦糖布丁（1入）",
-                price: 580,
-                rating: 4.8,
-                category: "caramel",
-                image:
-                  "https://images.unsplash.com/photo-1587314168485-3236d6710814?w=200&h=150&fit=crop",
-                isHot: true,
-              },
-              {
-                id: 11,
-                name: "巧克力蛋糕（1入）",
-                price: 490,
-                rating: 4.7,
-                category: "chocolate",
-                image:
-                  "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=200&h=150&fit=crop",
-                isNew: true,
-              },
-              {
-                id: 12,
-                name: "巧克力蛋糕（1入）",
-                price: 260,
-                rating: 4.6,
-                category: "chocolate",
-                image:
-                  "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=200&h=150&fit=crop",
-                isDiscounted: true,
-              },
-            ],
-          };
+          if (this.selectedCategory) {
+            filtered = filtered.filter(
+              (product) => product.category === this.selectedCategory
+            );
+          }
+
+          if (this.sortBy === "price-low") {
+            filtered = filtered.sort((a, b) => a.price - b.price);
+          } else if (this.sortBy === "price-high") {
+            filtered = filtered.sort((a, b) => b.price - a.price);
+          } else if (this.sortBy === "rating") {
+            filtered = filtered.sort((a, b) => b.rating - a.rating);
+          }
+
+          return filtered;
         },
-        computed: {
-          filteredProducts() {
-            let filtered = this.products;
-
-            if (this.selectedCategory) {
-              filtered = filtered.filter(
-                (product) => product.category === this.selectedCategory
-              );
-            }
-
-            if (this.sortBy === "price-low") {
-              filtered = filtered.sort((a, b) => a.price - b.price);
-            } else if (this.sortBy === "price-high") {
-              filtered = filtered.sort((a, b) => b.price - a.price);
-            } else if (this.sortBy === "rating") {
-              filtered = filtered.sort((a, b) => b.rating - a.rating);
-            }
-
-            return filtered;
-          },
+      },
+      methods: {
+        addToCart(product) {
+          alert(`已將 ${product.name} 加入購物車！`);
         },
-        methods: {
-          addToCart(product) {
-            alert(`已將 ${product.name} 加入購物車！`);
-          },
-        },
-      }).mount("#app");
-    </script>
-  </body>
+      },
+    }).mount("#app");
+  </script>
+</body>
+
 </html>

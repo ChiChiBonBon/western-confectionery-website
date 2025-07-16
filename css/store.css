@@ -1,0 +1,534 @@
+/* * {
+  outline: 1px solid blue;
+} */
+
+body {
+  width: 1920px;
+  position: relative;
+}
+
+/* 主要內容置中 */
+.wrapper {
+  width: 1294px;
+}
+
+.header-logo-nav {
+  position: absolute;
+  position: fixed;
+  z-index: 99;
+}
+
+header h1 {
+  width: 153px;
+  height: 168px;
+  background-color: #f5f0d2;
+  padding-inline: 20px;
+  padding-block: 18px;
+  border-radius: 0px 0px 28px 28px;
+  box-shadow: 3px 0px 4px rgba(0, 0, 0, 0.25);
+
+  position: absolute;
+  left: 2.1875%;
+}
+
+header h1 .logo {
+  width: 153px;
+  vertical-align: middle;
+}
+
+header h1 span {
+  display: hidden;
+}
+
+header .nav-main {
+  background-color: #f69100;
+  width: 1920px;
+  height: 120px;
+  padding-left: 253px;
+  box-sizing: border-box;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+header .nav-main ul {
+  display: flex;
+  flex-direction: row;
+
+  padding-top: 40px;
+}
+
+header .nav-main a {
+  color: #471d00;
+  text-decoration: none;
+  font-family: "Yu Mincho";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 42px;
+  letter-spacing: 0.02em;
+  padding-inline: 30px;
+}
+
+header .header-tools {
+  display: flex;
+  align-items: center;
+  padding-right: 50px;
+}
+
+.header-tools .icon-link {
+  display: inline-block;
+  /* 保持簡單、不被 flex 拉伸 */
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  line-height: 0;
+  /* 消除底部空隙 */
+}
+
+header .header-tools .shopping-cart,
+header .header-tools .account-circle {
+  width: 40px;
+  height: 40px;
+  padding-left: 40px;
+}
+
+.breadcrumb {
+  background-color: #f4f4f4;
+  padding-top: 120px;
+  width: 100vw;
+  height: 100%;
+  padding-left: 320px;
+}
+
+.breadcrumb ol {
+  display: flex;
+  padding-block: 17px;
+}
+
+.breadcrumb li {
+  /* 商品 */
+  list-style: none;
+  /* 中/20 */
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 32px;
+
+  /* 無彩色/非全黑 */
+  color: #471d00;
+}
+
+.breadcrumb li::after {
+  content: "➔";
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.breadcrumb li:last-child::after {
+  content: "";
+}
+
+.breadcrumb li a {
+  color: #471d00;
+  text-decoration: none;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: 25px;
+  /* 圓角 */
+  padding-left: 25px;
+  width: 229px;
+  height: 55px;
+  box-sizing: border-box;
+  /* padding-right: 25px; */
+
+  /* 可自行調整 */
+}
+
+.search-icon {
+  display: block;
+  /* 避免 svg 受 baseline 影響 */
+  width: 21px;
+  height: 21px;
+  fill: #663300;
+}
+
+.search-container input {
+  border: none;
+  outline: none;
+  /* flex: 1; */
+  font-size: 14px;
+  /* margin負值可能影響版面計算，可能會版面錯誤? */
+  margin-right: -25px;
+}
+
+.search-container .search-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.section-store{
+  width: 100vw;
+  background-color: #f5f1d1;
+  padding-top: 70px;
+}
+
+.section-store::before {
+  content: "";
+  display: block;
+  /* 或 inline-block */
+  width: 50%;
+  /* 裝飾圖寬度 */
+  height: 50%;
+  /* 裝飾圖高度 */
+
+  /* outline: 1px solid blue; */
+  background-image: url(../img/screentone-bottom.webp);
+  /* 裝飾圖路徑 */
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  /* 根據你想要的位置調整 */
+  /* 或 left / center 調整 */
+  z-index: 1;
+}
+
+.section-store::after {
+  content: "";
+  display: block;
+  /* 或 inline-block */
+  width: 50%;
+  /* 裝飾圖寬度 */
+  height: 50%;
+  /* 裝飾圖高度 */
+
+  /* outline: 1px solid blue; */
+  background-image: url(../img/screentone-bottom.webp);
+  /* 裝飾圖路徑 */
+  background-size: contain;
+  background-repeat: no-repeat;
+  transform: scaleX(-1);
+
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  
+  /* 根據你想要的位置調整 */
+  /* 或 left / center 調整 */
+  z-index: 1;
+}
+
+/* 優惠活動區 */
+.section-promotion {
+  width: 64.58vw;
+  margin-inline: auto;
+
+}
+
+.promotion-image img {
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* 
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+
+  50% {
+    transform: scale(1.1);
+    opacity: 0.2;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+} */
+
+/* 商品網格區 */
+.products-section {
+  padding-top:45px;
+  width: 64.58vw;
+  margin-inline: auto;
+  padding: 30px;
+  border-radius: 15px;
+  position: relative;
+  z-index: 9;  
+}
+
+.filter-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.filter-select {
+  padding: 8px 15px;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  font-size: 14px;
+  background: white;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.filter-select:hover {
+  border-color: #ff8c00;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 25px;
+}
+
+.product-tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #ff8c00;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 10px;
+  font-weight: bold;
+  z-index: 2;
+}
+
+.product-card {
+  position: relative;
+}
+
+/* 分頁 */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 30px 0;
+}
+
+.page-btn {
+  width: 35px;
+  height: 35px;
+  border: none;
+  border-radius: 50%;
+  background: #f0f0f0;
+  color: #666;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.page-btn:hover,
+.page-btn.active {
+  background: #ff8c00;
+  color: white;
+}
+
+.site-footer {
+  padding-block: 7.8%;
+  width: 1920px;
+  /* 主色調/橘 */
+  background: #f69100;
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+}
+
+.site-footer .footer-info p:nth-child(1) {
+  /* 有任何問題，歡迎聯繫我們！ 感謝您對 CHOcaramel 喬．焦糖的支持 期待為您帶來甜點的美好回憶！ */
+  /* 中/24 */
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 32px;
+  /* 無彩色/非全黑 */
+  color: #471d00;
+}
+
+.site-footer .footer-info p:nth-child(2),
+.site-footer .footer-info p:nth-child(3) {
+  /* 客服信箱：CHOcara@example.com 客服電話：(02)1234-5678 */
+  /* 中/18 */
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 26px;
+
+  /* 無彩色/非全黑 */
+  color: #471d00;
+}
+
+.site-footer .footer-copyright {
+  /* ©CHOcaramel 喬．焦糖 Inc. */
+  /* 中/18 */
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 26px;
+
+  /* 無彩色/白 */
+  color: #ffffff;
+  position: absolute;
+  right: 3%;
+  bottom: 35%;
+}
+
+
+
+
+.hot-badge {
+  background: white;
+  color: #ff8c00;
+  padding: 15px 25px;
+  border-radius: 50px;
+  font-size: 18px;
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1;
+}
+
+.hot-products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.product-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.product-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.product-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.1);
+}
+
+.product-info {
+  padding: 15px;
+  text-align: center;
+}
+
+.product-name {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.product-price {
+  font-size: 18px;
+  font-weight: bold;
+  color: #ff8c00;
+  margin-bottom: 10px;
+}
+
+.product-rating {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.stars {
+  color: #ffd700;
+}
+
+.rating-text {
+  font-size: 12px;
+  color: #666;
+}
+
+.add-to-cart {
+  background: #ff8c00;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.3s ease;
+}
+
+.add-to-cart:hover {
+  background: #e67e00;
+}
+
+
+/* 響應式設計 */
+/* @media (max-width: 768px) {
+  .hot-products {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .promotion-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .promotion-title {
+    font-size: 24px;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hot-products {
+    grid-template-columns: 1fr;
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .container {
+    padding: 10px;
+  }
+} */

@@ -1688,7 +1688,7 @@ header .header-tools .account-circle {
   /* 細/12 */
   font-family: "Noto Sans TC";
   font-style: normal;
-  font-weight: 400;
+  font-weight: 600;
   font-size: 12px;
   line-height: 14px;
   /* 無彩色/非全黑 */
@@ -1700,7 +1700,7 @@ header .header-tools .account-circle {
   /* 中/18 */
   font-family: "Noto Sans TC";
   font-style: normal;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 18px;
   line-height: 26px;
   /* 無彩色/非全黑 */
@@ -1712,7 +1712,7 @@ header .header-tools .account-circle {
   /* 中/18 */
   font-family: "Noto Sans TC";
   font-style: normal;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 18px;
   line-height: 26px;
   /* 無彩色/非全黑 */
@@ -1758,7 +1758,7 @@ header .header-tools .account-circle {
 
 .section-pick-item .product-tags .new {
   /* 商品標籤 */
-  padding: 2px 8px 4px;
+  padding: 8px 8px 4px;
   gap: 10px;
 
   width: 52px;
@@ -1775,7 +1775,7 @@ header .header-tools .account-circle {
   /* 中/18 */
   font-family: "Noto Sans TC";
   font-style: normal;
-  font-weight: 600;
+  /* font-weight: 600; */
   font-size: 18px;
   line-height: 26px;
   /* 無彩色/白 */
@@ -1801,7 +1801,7 @@ header .header-tools .account-circle {
   /* 中/18 */
   font-family: "Noto Sans TC";
   font-style: normal;
-  font-weight: 600;
+  /* font-weight: 600; */
   font-size: 18px;
   line-height: 26px;
   /* 無彩色/白 */
