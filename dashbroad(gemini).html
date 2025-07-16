@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Material Dashboard 2 儀表板切版</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa; /* 淺灰色背景 */
+        }
+        #app {
+            display: flex;
+            min-height: 100vh; /* 確保內容佔滿整個視窗高度 */
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #343a40; /* 深色側邊欄 */
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            border-radius: 0.5rem; /* 圓角 */
+            margin: 1rem;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); /* 陰影 */
+        }
+        .sidebar .logo {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+        }
+        .sidebar .nav-link {
+            color: rgba(255, 255, 255, 0.7);
+            padding: 10px 15px;
+            margin-bottom: 5px;
+            border-radius: 0.375rem;
+            transition: background-color 0.3s ease;
+        }
+        .sidebar .nav-link:hover,
+        .sidebar .nav-link.active {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+        .sidebar .nav-link i {
+            margin-right: 10px;
+        }
+        .sidebar .upgrade-btn {
+            margin-top: auto; /* 推到底部 */
+            background-color: #e91e63; /* 粉色按鈕 */
+            border-color: #e91e63;
+            border-radius: 0.5rem;
+        }
+        .main-content {
+            flex-grow: 1; /* 佔據剩餘空間 */
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .navbar {
+            background-color: #fff;
+            border-radius: 0.5rem;
+            margin-bottom: 20px;
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        }
+        .card {
+            border-radius: 0.75rem; /* 更大的圓角 */
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05); /* 輕微陰影 */
+            margin-bottom: 20px;
+            border: none; /* 移除預設邊框 */
+        }
+        .card-header {
+            background-color: transparent;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .card-body {
+            padding-top: 15px;
+        }
+        .stats-card .icon-square {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0.75rem;
+            font-size: 1.5rem;
+            color: #fff;
+            margin-top: -30px; /* 向上偏移 */
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        }
+        .stats-card .icon-square.bg-gradient-primary { background: linear-gradient(195deg, #ec407a, #d81b60); } /* 粉色漸變 */
+        .stats-card .icon-square.bg-gradient-success { background: linear-gradient(195deg, #66bb6a, #43a047); } /* 綠色漸變 */
+        .stats-card .icon-square.bg-gradient-info { background: linear-gradient(195deg, #42a5f5, #2196f3); } /* 藍色漸變 */
+        .stats-card .icon-square.bg-gradient-warning { background: linear-gradient(195deg, #ffa726, #fb8c00); } /* 橙色漸變 */
+
+        .chart-card .card-header {
+            min-height: 200px; /* 圖表區域高度 */
+            border-radius: 0.75rem;
+            margin-top: -30px;
+            margin-left: 15px;
+            margin-right: 15px;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 2rem;
+        }
+        .chart-card .card-header.bg-gradient-primary { background: linear-gradient(195deg, #ec407a, #d81b60); }
+        .chart-card .card-header.bg-gradient-success { background: linear-gradient(195deg, #66bb6a, #43a047); }
+        .chart-card .card-header.bg-gradient-info { background: linear-gradient(195deg, #42a5f5, #2196f3); }
+
+        .progress-bar-custom {
+            height: 8px;
+            border-radius: 0.25rem;
+        }
+        .project-item {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .project-item:last-child {
+            border-bottom: none;
+        }
+        .activity-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        .activity-item .icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 0.8rem;
+            margin-right: 10px;
+            flex-shrink: 0; /* 防止圖標縮小 */
+        }
+        .activity-item .icon.bg-dark { background-color: #343a40 !important; }
+        .activity-item .icon.bg-info { background-color: #0dcaf0 !important; }
+        .activity-item .icon.bg-success { background-color: #198754 !important; }
+        .activity-item .icon.bg-warning { background-color: #ffc107 !important; }
+
+        /* 響應式調整 */
+        @media (max-width: 991.98px) {
+            #app {
+                flex-direction: column; /* 小螢幕下側邊欄和主內容垂直排列 */
+            }
+            .sidebar {
+                width: 100%;
+                margin: 0;
+                border-radius: 0;
+                padding: 15px;
+            }
+            .main-content {
+                padding: 15px;
+            }
+            .stats-card .icon-square {
+                margin-top: 0; /* 小螢幕下圖標不向上偏移 */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="sidebar">
+            <div class="logo">
+                Material Dashboard 2
+            </div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">
+                        <i class="fas fa-chart-pie"></i>
+                        儀表板
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-table"></i>
+                        表格
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-receipt"></i>
+                        帳單
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-vr-cardboard"></i>
+                        VR 實境
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-bell"></i>
+                        通知
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-user-circle"></i>
+                        個人資料
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-sign-in-alt"></i>
+                        登入
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-user-plus"></i>
+                        註冊
+                    </a>
+                </li>
+            </ul>
+            <button class="btn btn-primary upgrade-btn">升級到專業版</button>
+        </div>
+
+        <div class="main-content">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">儀表板</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><i class="fas fa-user"></i> 登入</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><i class="fas fa-cog"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><i class="fas fa-bell"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="row">
+                <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+                    <div class="card stats-card">
+                        <div class="card-body p-3">
+                            <div class="row">
+                                <div class="col-8">
+                                    <div class="numbers">
+                                        <p class="text-sm mb-0 text-capitalize font-weight-bold">今日營收</p>
+                                        <h5 class="font-weight-bolder mb-0">
+                                            $53k
+                                            <span class="text-success text-sm font-weight-bolder">+55%</span>
+                                        </h5>
+                                    </div>
+                                </div>
+                                <div class="col-4 text-end">
+                                    <div class="icon-square bg-gradient-primary shadow text-center">
+                                        <i class="fas fa-money-bill-wave text-lg opacity-10" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+                    <div class="card stats-card">
+                        <div class="card-body p-3">
+                            <div class="row">
+                                <div class="col-8">
+                                    <div class="numbers">
+                                        <p class="text-sm mb-0 text-capitalize font-weight-bold">今日用戶</p>
+                                        <h5 class="font-weight-bolder mb-0">
+                                            2,300
+                                            <span class="text-success text-sm font-weight-bolder">+3%</span>
+                                        </h5>
+                                    </div>
+                                </div>
+                                <div class="col-4 text-end">
+                                    <div class="icon-square bg-gradient-success shadow text-center">
+                                        <i class="fas fa-users text-lg opacity-10" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+                    <div class="card stats-card">
+                        <div class="card-body p-3">
+                            <div class="row">
+                                <div class="col-8">
+                                    <div class="numbers">
+                                        <p class="text-sm mb-0 text-capitalize font-weight-bold">新客戶</p>
+                                        <h5 class="font-weight-bolder mb-0">
+                                            3,462
+                                            <span class="text-danger text-sm font-weight-bolder">-2%</span>
+                                        </h5>
+                                    </div>
+                                </div>
+                                <div class="col-4 text-end">
+                                    <div class="icon-square bg-gradient-info shadow text-center">
+                                        <i class="fas fa-user-plus text-lg opacity-10" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-sm-6">
+                    <div class="card stats-card">
+                        <div class="card-body p-3">
+                            <div class="row">
+                                <div class="col-8">
+                                    <div class="numbers">
+                                        <p class="text-sm mb-0 text-capitalize font-weight-bold">銷售額</p>
+                                        <h5 class="font-weight-bolder mb-0">
+                                            $103,430
+                                            <span class="text-success text-sm font-weight-bolder">+5%</span>
+                                        </h5>
+                                    </div>
+                                </div>
+                                <div class="col-4 text-end">
+                                    <div class="icon-square bg-gradient-warning shadow text-center">
+                                        <i class="fas fa-shopping-cart text-lg opacity-10" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-lg-4 mb-lg-0 mb-4">
+                    <div class="card z-index-2 chart-card">
+                        <div class="card-header p-3 bg-gradient-primary">
+                            網站瀏覽量
+                        </div>
+                        <div class="card-body">
+                            <h6 class="mb-0">網站瀏覽量</h6>
+                            <p class="text-sm">最後一次活動表現</p>
+                            <hr class="dark horizontal">
+                            <div class="d-flex">
+                                <i class="far fa-clock me-1"></i>
+                                <p class="mb-0 text-sm">活動排程兩天前</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-lg-0 mb-4">
+                    <div class="card z-index-2 chart-card">
+                        <div class="card-header p-3 bg-gradient-success">
+                            每日銷售額
+                        </div>
+                        <div class="card-body">
+                            <h6 class="mb-0">每日銷售額</h6>
+                            <p class="text-sm">+15% 今日銷售額增長</p>
+                            <hr class="dark horizontal">
+                            <div class="d-flex">
+                                <i class="far fa-clock me-1"></i>
+                                <p class="mb-0 text-sm">排程一分鐘前更新</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card z-index-2 chart-card">
+                        <div class="card-header p-3 bg-gradient-info">
+                            已完成任務
+                        </div>
+                        <div class="card-body">
+                            <h6 class="mb-0">已完成任務</h6>
+                            <p class="text-sm">最後一次活動表現</p>
+                            <hr class="dark horizontal">
+                            <div class="d-flex">
+                                <i class="far fa-clock me-1"></i>
+                                <p class="mb-0 text-sm">排程剛更新</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-lg-8 mb-lg-0 mb-4">
+                    <div class="card">
+                        <div class="card-header pb-0">
+                            <div class="row">
+                                <div class="col-lg-6 col-7">
+                                    <h6>專案</h6>
+                                    <p class="text-sm mb-0">
+                                        <i class="fa fa-check text-info" aria-hidden="true"></i>
+                                        <span class="font-weight-bold ms-1">30 個</span> 本月完成
+                                    </p>
+                                </div>
+                                <div class="col-lg-6 col-5 my-auto text-end">
+                                    <div class="dropdown float-lg-end pe-4">
+                                        <a class="cursor-pointer" id="dropdownTable" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="fa fa-ellipsis-v text-secondary"></i>
+                                        </a>
+                                        <ul class="dropdown-menu px-2 py-3 ms-sm-n4 ms-n5" aria-labelledby="dropdownTable">
+                                            <li><a class="dropdown-item border-radius-md" href="javascript:;">動作</a></li>
+                                            <li><a class="dropdown-item border-radius-md" href="javascript:;">另一個動作</a></li>
+                                            <li><a class="dropdown-item border-radius-md" href="javascript:;">其他</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body px-0 pb-2">
+                            <div class="table-responsive">
+                                <table class="table align-items-center mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">公司</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">成員</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">預算</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">完成度</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr v-for="project in projects" :key="project.id">
+                                            <td>
+                                                <div class="d-flex px-2 py-1">
+                                                    <div>
+                                                        <i :class="project.icon" class="me-2 text-lg"></i>
+                                                    </div>
+                                                    <div class="d-flex flex-column justify-content-center">
+                                                        <h6 class="mb-0 text-sm">{{ project.name }}</h6>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="avatar-group mt-2">
+                                                    </div>
+                                            </td>
+                                            <td class="align-middle text-center text-sm">
+                                                <span class="text-xs font-weight-bold">{{ project.budget }}</span>
+                                            </td>
+                                            <td class="align-middle">
+                                                <div class="progress-wrapper w-75 mx-auto">
+                                                    <div class="progress-info">
+                                                        <div class="progress-percentage">
+                                                            <span class="text-xs font-weight-bold">{{ project.completion }}%</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="progress progress-bar-custom">
+                                                        <div class="progress-bar bg-gradient-info w-{{ project.completion }}" role="progressbar" :aria-valuenow="project.completion" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card h-100">
+                        <div class="card-header pb-0 p-3">
+                            <div class="row">
+                                <div class="col-6 d-flex align-items-center">
+                                    <h6 class="mb-0">訂單概覽</h6>
+                                </div>
+                                <div class="col-6 text-end">
+                                    <button class="btn btn-link text-dark px-3 mb-0" @click="showSettings = !showSettings">
+                                        <i class="fa fa-cog me-2" aria-hidden="true"></i>設定
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body p-3">
+                            <ul class="list-group">
+                                <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
+                                    <div class="icon bg-dark">
+                                        <i class="fas fa-bell"></i>
+                                    </div>
+                                    <div class="d-flex flex-column">
+                                        <h6 class="mb-1 text-dark text-sm">通知</h6>
+                                        <span class="text-xs">設計變更</span>
+                                    </div>
+                                    <p class="text-xs ms-auto mb-0">22 DEC 7:20 PM</p>
+                                </li>
+                                <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
+                                    <div class="icon bg-info">
+                                        <i class="fas fa-code"></i>
+                                    </div>
+                                    <div class="d-flex flex-column">
+                                        <h6 class="mb-1 text-dark text-sm">程式碼</h6>
+                                        <span class="text-xs">新訂單 #1832412</span>
+                                    </div>
+                                    <p class="text-xs ms-auto mb-0">21 DEC 11:00 PM</p>
+                                </li>
+                                <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
+                                    <div class="icon bg-success">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </div>
+                                    <div class="d-flex flex-column">
+                                        <h6 class="mb-1 text-dark text-sm">購物</h6>
+                                        <span class="text-xs">四月份的伺服器付款</span>
+                                    </div>
+                                    <p class="text-xs ms-auto mb-0">21 DEC 9:34 PM</p>
+                                </li>
+                                <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
+                                    <div class="icon bg-warning">
+                                        <i class="fas fa-credit-card"></i>
+                                    </div>
+                                    <div class="d-flex flex-column">
+                                        <h6 class="mb-1 text-dark text-sm">信用卡</h6>
+                                        <span class="text-xs">為訂單 #4396133 添加新卡</span>
+                                    </div>
+                                    <p class="text-xs ms-auto mb-0">20 DEC 2:20 AM</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                showSettings: false,
+                projects: [
+                    { id: 1, icon: 'fab fa-angular', name: 'Material XD Version', budget: '$14,000', completion: 60 },
+                    { id: 2, icon: 'fas fa-plus', name: 'Add Progress Track', budget: '$3,000', completion: 100 },
+                    { id: 3, icon: 'fas fa-tools', name: 'Fix Platform Errors', budget: '未設定', completion: 0 },
+                    // 更多專案可以從這裡添加
+                ]
+            },
+            methods: {
+                // 這裡可以添加 Vue.js 方法
+            },
+            mounted() {
+                // Vue.js 實例掛載後執行
+                console.log('Vue.js 應用已啟動');
+            }
+        });
+    </script>
+</body>
+</html>
